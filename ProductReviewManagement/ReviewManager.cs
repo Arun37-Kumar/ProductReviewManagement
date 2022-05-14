@@ -172,5 +172,21 @@ namespace ProductReviewManagement
             }
         }
 
+        public void SkipTopFiveRecords(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                var skipFiveRecords = (from product in products orderby product.Rating descending select product).Skip(5).ToList();
+                foreach (var product in skipFiveRecords)
+                {
+                    Console.WriteLine(product);
+                }
+            }
+            else
+            {
+                Console.WriteLine("List do not contains any data");
+            }
+        }
+
     }
 }

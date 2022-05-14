@@ -8,6 +8,12 @@ namespace ProductReviewManagement
 {
     class ReviewManager
     {
+        /// <summary>
+        /// Adding the Products to the List
+        /// UC1
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
         public List<ProductReview> AddProductReview(List<ProductReview> products)
         {
             try
@@ -52,6 +58,11 @@ namespace ProductReviewManagement
             return products;
         }
 
+        /// <summary>
+        /// UC1
+        /// Showing the List
+        /// </summary>
+        /// <param name="products"></param>
         public void ShowList(List<ProductReview> products)
         {
             try
@@ -71,6 +82,28 @@ namespace ProductReviewManagement
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// UC3 Retrieving Top 3 Ratings from the product
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public List<ProductReview> RetrieveData(List<ProductReview> products)
+        {
+            //Retrive top 3 rating using LINQ
+            if(products != null)
+            {
+                var productRatingRetrieve = products.OrderByDescending(rating => rating.Rating).Take(3).ToList();
+                Console.WriteLine("Printing Top 3 Ratings : ");
+                ShowList(productRatingRetrieve);
+                return productRatingRetrieve;
+            }
+            else
+            {
+                Console.WriteLine("Products not found in the List");
+                return default;
             }
         }
 

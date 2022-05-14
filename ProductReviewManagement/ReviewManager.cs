@@ -131,6 +131,10 @@ namespace ProductReviewManagement
             }
         }
 
+        /// <summary>
+        /// UC5 Retrieve Product Id Count
+        /// </summary>
+        /// <param name="products"></param>
         public void RetrieveProductIdCount(List<ProductReview> products)
         {
             if (products != null)
@@ -145,6 +149,26 @@ namespace ProductReviewManagement
             else
             {
                 Console.WriteLine("Products not found in the List");
+            }
+        }
+
+        /// <summary>
+        /// UC5 Retrieve Product Id And Review
+        /// </summary>
+        /// <param name="products"></param>
+        public void RetrieveProductIdAndReview(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                var countReviewId = products.Select( x => new { productId = x.ProductId , review = x.Review  }).ToList();
+                foreach (var product in countReviewId)
+                {
+                    Console.WriteLine($"Product Id : {product.productId}, Product Review : {product.review}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Product List is empty");
             }
         }
 

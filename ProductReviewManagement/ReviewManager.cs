@@ -131,5 +131,22 @@ namespace ProductReviewManagement
             }
         }
 
+        public void RetrieveProductIdCount(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                var productCount = products.GroupBy(p => p.ProductId).Select(p => new { productId = p.Key, count = p.Count() });
+                Console.WriteLine("Count the Product Review based on Product Id : ");
+                foreach (var product in productCount)
+                {
+                    Console.WriteLine($"Product Id: { product.productId},  Product Count : { product.count} ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Products not found in the List");
+            }
+        }
+
     }
 }

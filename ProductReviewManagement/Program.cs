@@ -25,6 +25,7 @@ namespace ProductReviewManagement
             Console.WriteLine("9 : Method to retreive records where isLike is true ");
             Console.WriteLine("10 : Find Average and Sum ");
             Console.WriteLine("11 : Get Nice Review Records form Table");
+            Console.WriteLine("12 : retreive records from datatable of particular user id order by rating");
             Console.Write("Enter the option  : ");
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -72,6 +73,9 @@ namespace ProductReviewManagement
                     break;
                 case 11:
                     manage.GetNiceReviewRecordsFromTable(products);
+                    break;
+                case 12:
+                    manage.GetRecordsBasedOnUserId(products,1);
                     break;
                 default:
                     break;

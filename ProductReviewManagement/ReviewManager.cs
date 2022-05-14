@@ -93,7 +93,7 @@ namespace ProductReviewManagement
         public List<ProductReview> RetrieveData(List<ProductReview> products)
         {
             //Retrive top 3 rating using LINQ
-            if(products != null)
+            if (products != null)
             {
                 var productRatingRetrieve = products.OrderByDescending(rating => rating.Rating).Take(3).ToList();
                 Console.WriteLine("Printing Top 3 Ratings : ");
@@ -160,7 +160,7 @@ namespace ProductReviewManagement
         {
             if (products != null)
             {
-                var countReviewId = products.Select( x => new { productId = x.ProductId , review = x.Review  }).ToList();
+                var countReviewId = products.Select(x => new { productId = x.ProductId, review = x.Review }).ToList();
                 foreach (var product in countReviewId)
                 {
                     Console.WriteLine($"Product Id : {product.productId}, Product Review : {product.review}");
@@ -172,6 +172,10 @@ namespace ProductReviewManagement
             }
         }
 
+        /// <summary>
+        /// UC6 Skip top five records
+        /// </summary>
+        /// <param name="products"></param>
         public void SkipTopFiveRecords(List<ProductReview> products)
         {
             if (products != null)
@@ -185,6 +189,26 @@ namespace ProductReviewManagement
             else
             {
                 Console.WriteLine("List do not contains any data");
+            }
+        }
+
+        /// <summary>
+        /// UC7 Retrieve only Product Id's and Reviews from the list using SELECT LINQ
+        /// </summary>
+        /// <param name="products"></param>
+        public void RetrieveOnlyProductIdAndReview(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                var retrieveIdAndReview = from product in products select product;
+                foreach (var product in retrieveIdAndReview)
+                {
+                    Console.WriteLine($"Product Id : {product.ProductId}, Review : {product.Review}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Product list is empty");
             }
         }
 

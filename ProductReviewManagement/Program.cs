@@ -19,6 +19,7 @@ namespace ProductReviewManagement
             Console.WriteLine("4 : Retrive Count of review by Product Id ");
             Console.WriteLine("5 : Retrieve Product Id And Review ");
             Console.WriteLine("6 : Skip top 5 Records ");
+            Console.WriteLine("7 : Retrieve only Product Id and Reviews ");
             Console.Write("Enter the option  : ");
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -48,6 +49,10 @@ namespace ProductReviewManagement
                 case 6: // Skip top 5 records
                     manage.AddProductReview(products);
                     manage.SkipTopFiveRecords(products);
+                    break;
+                case 7: // Retrieve Only product Id and Reviews
+                    manage.AddProductReview(products);
+                    manage.RetrieveOnlyProductIdAndReview(products);
                     break;
                 default:
                     break;

@@ -24,6 +24,7 @@ namespace ProductReviewManagement
             Console.WriteLine("8 : Create Data Table and add the values ");
             Console.WriteLine("9 : Method to retreive records where isLike is true ");
             Console.WriteLine("10 : Find Average and Sum ");
+            Console.WriteLine("11 : Get Nice Review Records form Table");
             Console.Write("Enter the option  : ");
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -68,6 +69,9 @@ namespace ProductReviewManagement
                 case 10:
                     manage.CreateDataTable(products);
                     manage.FindAvgRatingForEachProductId(products);
+                    break;
+                case 11:
+                    manage.GetNiceReviewRecordsFromTable(products);
                     break;
                 default:
                     break;

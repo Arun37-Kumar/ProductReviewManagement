@@ -86,7 +86,7 @@ namespace ProductReviewManagement
         }
 
         /// <summary>
-        /// UC3 Retrieving Top 3 Ratings from the product
+        /// UC2 Retrieving Top 3 Ratings from the product
         /// </summary>
         /// <param name="products"></param>
         /// <returns></returns>
@@ -103,6 +103,30 @@ namespace ProductReviewManagement
             else
             {
                 Console.WriteLine("Products not found in the List");
+                return default;
+            }
+        }
+
+
+        /// <summary>
+        ///UC3 - Method to retrieve records from the list rating greater than 3 and product id 1 or 4 or 9 using LINQ 
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public List<ProductReview> RetrieveSpecificRecords(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                //LINQ 
+                var retrieveRating = (from product in products where (product.ProductId == 1 || product.ProductId == 4 || product.ProductId == 9) && product.Rating > 3 select product).ToList();
+
+                Console.WriteLine("\nRecords Based On Rating And ProductId");
+                ShowList(retrieveRating);
+                return retrieveRating;
+            }
+            else
+            {
+                Console.WriteLine("Products Review not found In The List");
                 return default;
             }
         }

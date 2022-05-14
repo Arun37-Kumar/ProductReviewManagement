@@ -15,6 +15,7 @@ namespace ProductReviewManagement
 
             Console.WriteLine("1 : Add Product Review ");
             Console.WriteLine("2 : Retrieve top 3 ratings ");
+            Console.WriteLine("3 : Retrive record with rating greater than 3 and product Id = 1,4,9 ");
             Console.Write("Enter the option  : ");
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -28,6 +29,10 @@ namespace ProductReviewManagement
                     manage.AddProductReview(products);
                     manage.ShowList(products);
                     manage.RetrieveData(products);
+                    break;
+                case 3: // Retrieving the products with rating greater than 3 and product id with 1,4,9
+                    manage.AddProductReview(products);
+                    manage.RetrieveSpecificRecords(products);
                     break;
                 default:
                     break;

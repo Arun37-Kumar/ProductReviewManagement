@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -212,5 +213,37 @@ namespace ProductReviewManagement
             }
         }
 
+        /// <summary>
+        /// UC8 Create DataTable    
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public DataTable CreateDataTable(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                DataTable dataTable = new DataTable();
+
+                //Adding the data to data table
+                dataTable.Columns.Add("ProductId", typeof(int));
+                dataTable.Columns.Add("UserId", typeof(int));
+                dataTable.Columns.Add("Rating", typeof(double));
+                dataTable.Columns.Add("Review", typeof(string));
+                dataTable.Columns.Add("IsLike", typeof(bool));
+
+                //Adding values to the data
+                foreach (var product in products)
+                {
+                    dataTable.Rows.Add(product.ProductId, product.UserId, product.Review, product.IsLike);
+                }
+                Console.WriteLine("Successfully added the values!");
+                return dataTable;
+            }
+            else
+            {
+                Console.WriteLine("Product Review not found in the List");
+                return default;
+            }
+        }
     }
 }

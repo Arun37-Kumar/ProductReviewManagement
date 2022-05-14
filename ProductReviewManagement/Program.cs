@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ProductReviewManagement
 {
@@ -20,6 +21,7 @@ namespace ProductReviewManagement
             Console.WriteLine("5 : Retrieve Product Id And Review ");
             Console.WriteLine("6 : Skip top 5 Records ");
             Console.WriteLine("7 : Retrieve only Product Id and Reviews ");
+            Console.WriteLine("8 : Create Data Table and add the values ");
             Console.Write("Enter the option  : ");
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -53,6 +55,9 @@ namespace ProductReviewManagement
                 case 7: // Retrieve Only product Id and Reviews
                     manage.AddProductReview(products);
                     manage.RetrieveOnlyProductIdAndReview(products);
+                    break;
+                case 8:
+                    manage.CreateDataTable(products);
                     break;
                 default:
                     break;

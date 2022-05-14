@@ -22,6 +22,7 @@ namespace ProductReviewManagement
             Console.WriteLine("6 : Skip top 5 Records ");
             Console.WriteLine("7 : Retrieve only Product Id and Reviews ");
             Console.WriteLine("8 : Create Data Table and add the values ");
+            Console.WriteLine("9 : Method to retreive records where isLike is true ");
             Console.Write("Enter the option  : ");
             int option = Convert.ToInt32(Console.ReadLine());
 
@@ -56,8 +57,12 @@ namespace ProductReviewManagement
                     manage.AddProductReview(products);
                     manage.RetrieveOnlyProductIdAndReview(products);
                     break;
-                case 8:
+                case 8: //Create Data Table and add the values
                     manage.CreateDataTable(products);
+                    break;
+                case 9: // Method to retreive records where isLike is true
+                    manage.CreateDataTable(products);
+                    manage.RetreiveRecordsForIsLikeTrue(products);
                     break;
                 default:
                     break;

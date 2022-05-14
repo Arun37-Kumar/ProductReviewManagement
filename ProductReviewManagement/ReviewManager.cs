@@ -223,7 +223,7 @@ namespace ProductReviewManagement
             if (products != null)
             {
                 DataTable dataTable = new DataTable();
-
+                    
                 //Adding the data to data table
                 dataTable.Columns.Add("ProductId", typeof(int));
                 dataTable.Columns.Add("UserId", typeof(int));
@@ -245,5 +245,29 @@ namespace ProductReviewManagement
                 return default;
             }
         }
+
+        /// <summary>
+        /// UC9 - Method to retreive records where isLike is true
+        /// </summary>
+        /// <param name="products"></param>
+        public void RetreiveRecordsForIsLikeTrue(List<ProductReview> products)
+        {
+            if (products != null)
+            {
+                DataTable dataTable = CreateDataTable(products);
+                var fetchRows = from table in dataTable.AsEnumerable() where table.Field<bool>("IsLike") == true select table;
+                Console.WriteLine($"ProductId,  UserId,  Rating,  Review,  IsLike");
+                foreach (var row in fetchRows)
+                {
+                    Console.WriteLine($"{row["ProductId"]},  {row["UserId"]},  {row["Rating"]},  {row["Review"]},  {row["IsLike"]}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Products Review not found In The List");
+            }
+        }
+
+
     }
 }
